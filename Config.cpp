@@ -232,6 +232,14 @@ int Config::parseConfigFile(const char * configfile)
 					  if (pos != string::npos) param.erase(0,pos );
 					  pos=param.find_first_of(delims);
 					  if (pos != string::npos) param.erase(pos);
+                      if (param == "client-cert-not-required")
+                      {
+                          this->deletechars(&line);
+                          if (line == "client-cert-not-required")
+                          {
+                              this->clientcertnotrequired=true;
+                          }
+                      }
 					  if (param == "verify-client-cert")
 					  {
 						  this->deletechars(&line);
